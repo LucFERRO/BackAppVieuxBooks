@@ -8,7 +8,7 @@ const swaggerOptions = {
     openapi: "3.0.1",
     swaggerDefinition: {
         info: {
-            title: 'API TEMPLATE',
+            title: 'API AppVieuxBooks',
             description: 'SWAGGER',
             contact: {
                 name: ''
@@ -35,8 +35,10 @@ const swaggerOptions2 = {
     customCss: '.swagger-ui .topbar { display: none }', 
     // .opblock-tag-section {background: red !important;}
     
-    customSiteTitle: "TopDoc API",
-    // customfavIcon: "/assets/favicon.ico"
+    customSiteTitle: "AppVieuxBooks API",
+
+    // marche pas ? 
+    // customfavIcon: "./src/assets/favicon.ico"
 }
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions)
