@@ -1,8 +1,8 @@
 export type BookDTO = {
-    _id: string,
+    _id?: string,
     name: string, 
     author: string,
-    state: string,
+    state: object,
     spot_id: string,
-    createdAt: Date
+    createdAt?: Date
 }

@@ -41,10 +41,10 @@ export class BookHandler {
     }
 
     updateBook = async (req: Request, res: Response) => {
-        const id = req.params.id
-
+        const bookId = req.params.id
+        const { name, author, state, spot_id } = req.body
         try {
-            const result = await this.bookService.update(req.body, id)
+            const result = await this.bookService.update({ name, author, state, spot_id }, bookId)
             if (result) return res.status(200).json({ message: 'Book successfully updated.' })
             return res.status(404).send()
         } catch (err) {

@@ -5,3 +5,8 @@ export interface IService<T> {
     update(t: T, id: string): Promise<boolean | string | undefined>;
     delete(id: string): Promise<boolean | string>;
 }
+
+export interface IApiService {
+    listAll(): Promise<any[]>;
+    isRegistered(id: string): Promise<any[]>;
+}

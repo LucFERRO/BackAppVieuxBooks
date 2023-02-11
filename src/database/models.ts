@@ -3,19 +3,23 @@ const { Schema } = mongoose
 
 export const spotSchema = new Schema({
     address: String,
-    createdAt: {
-        type: Date,
-        immutable: true,
-        default: () => Date.now()
+    // createdAt: {
+    //     type: Date,
+    //     immutable: true,
+    //     default: () => Date.now()
+    // }
+},
+    {
+        timestamps: true
     }
-})
+)
 
 export const Spot = mongoose.model('Spot', spotSchema)
 
 export const bookSchema = new Schema({
     name: String,
     author: String,
-    state: Date,
+    state: Object,
     spot_id: String,
     createdAt: {
         type: Date,
