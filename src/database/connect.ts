@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { Book } from './models';
 import { Spot } from './models';
-
+import 'dotenv/config'
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.CLUSTER_ID}/${process.env.DB_NAME}?${process.env.DB_OPTIONS}`
 
 export async function databaseConnection() {
