@@ -8,7 +8,8 @@ export class BookMapper {
             _id : book._id,
             name: book.name, 
             author: book.author,
-            state: book.state,
+            date: book.date,
+            user_id: book.user_id,
             spot_id: book.spot_id,
             createdAt: book.createdAt
         }

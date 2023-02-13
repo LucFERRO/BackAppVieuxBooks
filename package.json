@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "nodemon server.ts",
-    "build": "tsc --project ./",
+    "build": "tsc --project ./ && cp .env ./build",
     "test": "jest --runInBand --setupFiles dotenv/config ",
     "start": "node build/server.js"
   },

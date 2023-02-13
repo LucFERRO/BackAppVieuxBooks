@@ -19,7 +19,8 @@ export const Spot = mongoose.model('Spot', spotSchema)
 export const bookSchema = new Schema({
     name: String,
     author: String,
-    state: Object,
+    date: Date,
+    user_id: String,
     spot_id: String,
     createdAt: {
         type: Date,

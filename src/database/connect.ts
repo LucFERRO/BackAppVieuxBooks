@@ -12,19 +12,22 @@ export async function databaseConnection() {
     const book1 = {
         name: "How to rekt TBOI: 101",
         author: "Gaetan le Malandrin",
-        state: {data: new Date(), user_id: '43DZFDFR'},
+        date: null,
+        user_id: null,
         spot_id: '63e4ed537d91ea19bcc06259',
     }
     const book2 = {
         name: "Book2",
         author: "Gaetan le Malandrin",
-        state: null,
+        date: null,
+        user_id: null,
         spot_id: '63e4ed537d91ea19bcc06259',
     }
     const book3 = {
         name: "Book3",
         author: "Ghedeon le Malandron",
-        state: {data: new Date(), user_id: '343DJIE'},
+        date: new Date(),
+        user_id: '343DJIE',
         spot_id: '63e4ed95a4783b73dae3faf1',
     }
 

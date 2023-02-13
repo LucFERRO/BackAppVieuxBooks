@@ -54,7 +54,7 @@ bookController.get('/:id', bookHandler.getBookById)
  *         in: body
  *         required: true
  *         type: object
- *         default: { "name": "TestCreate", "author": "Gaetan le Createur Fou", "state": '', "spot_id": '63e4ed537d91ea19bcc06259'}
+ *         default: { "name": "TestCreate", "author": "Gaetan le Createur Fou", "spot_id": '63e4ed537d91ea19bcc06259'}
  *      responses:
  *        200:
  *          description: Create.
@@ -80,7 +80,7 @@ bookController.post('/', bookHandler.createBook)
  *         in: body
  *         required: true
  *         type: object
- *         default: { "name": "TestUpdate", "author": "Gaetan l'Updateur Fou", "state": '', "spot_id": '63e4ed537d91ea19bcc06259'}
+ *         default: { "name": "TestUpdate", "author": "Gaetan le Createur Fou", "user_id": null, "spot_id": '63e4ed537d91ea19bcc06259'}
  *      responses:
  *        200:
  *          description: Update.

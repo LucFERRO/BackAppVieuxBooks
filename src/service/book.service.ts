@@ -23,7 +23,8 @@ export class BookService implements IService<BookDTO> {
     }
 
     async update(data: BookDTO, id: string): Promise<string | boolean | undefined> {
-        return this.bookRepository.update(data, id)
+        const today = new Date()
+        return this.bookRepository.update(Object.assign(data, { date: today }), id)
     }
 
     async delete(id: string): Promise<boolean | string> {
