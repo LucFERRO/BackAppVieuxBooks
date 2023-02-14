@@ -63,7 +63,7 @@
 
 //     // describe('Doctor findAll', () => {
 //     //     it("doit retourne les details des utilisateurs", async () => {
-//     //         const mockReponse: any[] = [
+//     //         const mockReponse: sdf[] = [
 //     //             {
 //     //                 id: 1,
 //     //                 mot_de_passe: "string",
@@ -87,7 +87,7 @@
 //     //             }
 //     //         ]
 
-//     //         const expected: any[] = [
+//     //         const expected: sdf[] = [
 //     //             {
 //     //                 email: "emailtest@email.com",
 //     //                 telephone: "780372674",
@@ -118,7 +118,7 @@
 //     // describe('Doctor post', () => {
 //     //     it("doit retourne les details de l'utilisateur", async () => {
 
-//     //         const mockReponse: any = {
+//     //         const mockReponse: sdf = {
 //     //             email: "a@a.com",
 //     //             telephone: "0123456789",
 //     //             mot_de_passe: "test",
@@ -129,7 +129,7 @@
 //     //             date_de_naissance: new Date('2000-01-20')
 //     //         }
 
-//     //         const expected: any = {
+//     //         const expected: sdf = {
 //     //             email: "a@a.com",
 //     //             telephone: "0123456789",
 //     //             prenom: "gaet",
