@@ -18,11 +18,12 @@ export class ListHandler {
         }
     }
 
-    isRegistered = async (req: Request, res: Response) => {
-        const userId = req.body.code
+    login = async (req: Request, res: Response) => {
+        const { name, code } = req.body
         try {
-            const result = await this.listService.isRegistered(userId);
-            res.status(200).json(result)
+            const result: any = await this.listService.login(name, code);
+            if (!result.admin) return res.status(403).json({ login: false, message: 'This user is not an admin.' })
+            res.status(200).json({ login: true, user: result })
         } catch (err) {
             res.status(500).json(err)
         }

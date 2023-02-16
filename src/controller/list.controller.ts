@@ -28,7 +28,7 @@ listController.get('/', listHandler.getList)
  * /api/list:
  *   post:
  *      tags: [List]
- *      description: Is registered.
+ *      description: Login.
  *      consumes:
  *       - application/json
  *      parameters:
@@ -36,9 +36,9 @@ listController.get('/', listHandler.getList)
  *         in: body
  *         required: true
  *         type: object
- *         default: { "code": "43DZFDFR"}
+ *         default: { "name": "Gaetan", "code": "43DZFDFR"}
  *      responses:
  *        200:
- *          description: IsRegistered.
+ *          description: login.
  */
-listController.post('/', listHandler.isRegistered)
+listController.post('/', listHandler.login)

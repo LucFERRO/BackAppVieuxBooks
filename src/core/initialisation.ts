@@ -9,6 +9,10 @@ import { SpotRepository } from "../repository/spot.repository";
 import { ListHandler } from "../handler/list.handler";
 import { ListService } from "../service/list.service";
 
-export const bookHandler = new BookHandler(new BookService(new BookRepository))
+export const exportedBookRepository = new BookRepository
+export const exportedSpotRepository = new SpotRepository
+
+
+export const bookHandler = new BookHandler(new BookService(exportedBookRepository))
 export const listHandler = new ListHandler(new ListService)
-export const spotHandler = new SpotHandler(new SpotService(new SpotRepository))
+export const spotHandler = new SpotHandler(new SpotService(exportedSpotRepository))

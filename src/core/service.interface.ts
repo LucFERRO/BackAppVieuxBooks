@@ -8,5 +8,5 @@ export interface IService<T> {
 
 export interface IApiService {
     listAll(): Promise<any[]>;
-    isRegistered(id: string): Promise<any[]>;
+    login(name: string, code: string): Promise<any[]>;
 }
