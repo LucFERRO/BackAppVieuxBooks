@@ -36,7 +36,7 @@ cron.schedule('* * 0 * * *', async () => {
         axios.post('http://141.94.247.187:3000/api/v1/send', {
             code: book.user_id,
             subject: "Rends l'argent!",
-            message: 'ça fait 5 semaines que tu dors avec le même livre!!!'
+            message: `ça fait 5 semaines que tu dors avec le livre ${book.name}!!!`
         })
     })
 });
