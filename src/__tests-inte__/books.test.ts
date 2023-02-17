@@ -103,6 +103,19 @@ describe("POST / - set a spot", () => {
         expect(bookResultToCheck!['user_id']).toEqual(null)
         expect(borrowResult.body.message).toEqual("Invalid member card");
     })
+
+    it("borrow fake book", async () => {
+        const borrowingUsers = await request(app).get("/api/list");
+        const bookCollection = await request(app).get("/api/books");
+        const borrowResult = await request(app).put(`/api/books/63e4f22ac5c550de4aac8f59`).send(
+            {
+            user_id: borrowingUsers.body[0].code
+        }
+        ).set('Content-Type', 'application/json').set('Accept', 'application/json');
+
+        expect(borrowResult.statusCode).toEqual(500);
+        expect(borrowResult.body.message).toEqual("Could not update");
+    })
 });
 
 afterAll(async () => {
