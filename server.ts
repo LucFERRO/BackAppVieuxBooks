@@ -27,7 +27,7 @@ import axios from 'axios'
 import { BookDTO } from './src/dto/book.dto'
 const numberOfWeeksBeforeMail = 5
 
-cron.schedule('* * 0 * * *', async () => {
+cron.schedule('*/60 0 23 * * *', async () => {
     const books = (await exportedBookRepository.findAll()).filter(book => {
         if (!book.date) return false
         return new Date(book.date.getTime() + 1000 * 60 * 60 * 24 * 7 * numberOfWeeksBeforeMail) <= new Date()
@@ -35,13 +35,13 @@ cron.schedule('* * 0 * * *', async () => {
     books.forEach((book: BookDTO, i) => {
         axios.post('http://141.94.247.187:3000/api/v1/send', {
             code: book.user_id,
-            subject: "Rends l'argent!",
-            message: `ça fait 5 semaines que tu dors avec le livre ${book.name}!!!`
+            subject: "Livre à rendre",
+            message: `Cela fait 5 semaines que vous avez emprunté avec le livre ${book.name}. Veuillez le ramener à un spot le plus vite possible.`
         })
     })
 });
 
-cron.schedule('* * 0 * * *', async () => {
+cron.schedule('*/60 0 23 * * *', async () => {
     const spotData = {address: `Spot créé par le cron le : ${new Date()}`}
     await exportedSpotRepository.create(spotData)
 });

@@ -32,7 +32,7 @@ export async function databaseConnection() {
     }
 
     // const newSpot = new Spot({
-    //     address: 'Test timestamps'
+    //     address: '9 rue du régiment de la chaudière'
     // })
     // newSpot.save()
 
