@@ -4,10 +4,15 @@ import { apiRouter } from './src/api/api.router'
 import cors from 'cors'
 import express from 'express'
 import helmet from 'helmet';
+import unexpectedErrorMiddleware from './src/middleware/error.global';
 
 var cron = require('node-cron');
 
-dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
+if (process.env.DEV == 'true') {
+    dotenv.config()
+} else {
+    dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
+}
 
 const app = express()
 app.use(cors())
@@ -16,6 +21,7 @@ app.use(express.json())
 app.use(helmet())
 app.disable('x-powered-by')
 app.use(apiRouter)
+app.use(unexpectedErrorMiddleware)
 
 export default app
 

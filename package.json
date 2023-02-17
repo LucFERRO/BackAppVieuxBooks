@@ -4,7 +4,7 @@
     "build": "NODE_ENV='' tsc --project ./ && cp .env ./build && cp .env.TEST ./build",
     "test": "jest --runInBand --setupFiles dotenv/config ",
     "test-inte": "NODE_ENV=.TEST jest --detectOpenHandles --testTimeout=5000 --config=jest.inte.config.json",
-    "start": "node build/server.js"
+    "start": "NODE_ENV='' node build/server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.20.7",
