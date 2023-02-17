@@ -2,8 +2,6 @@ import { createLogger, transports, format } from "winston";
 import * as dotenv from 'dotenv';
 import DailyRotateFile from 'winston-daily-rotate-file';
 
-dotenv.config()
-
 const fileName: string = process.env.LOGS_FOLDER + "logs";
 
 let logTransports = process.env.PRODUCTION === "true" ?

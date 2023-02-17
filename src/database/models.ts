@@ -2,7 +2,10 @@ import mongoose from 'mongoose'
 const { Schema } = mongoose
 
 export const spotSchema = new Schema({
-    address: String,
+    address: {
+        type: String,
+        unique: true,
+    },
     // createdAt: {
     //     type: Date,
     //     immutable: true,

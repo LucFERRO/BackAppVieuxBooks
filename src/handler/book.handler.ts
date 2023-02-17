@@ -46,8 +46,9 @@ export class BookHandler {
         const { name, author, user_id, spot_id } = req.body
         try {
             const result : any = await this.bookService.update({ name, author, user_id, spot_id }, bookId)
+            if (result == '400') return res.status(400).json({ message: 'Invalid member card' })
             if (!result.modifiedCount) return res.status(500).json({ message: 'Could not update' })
-            return res.status(404).json({ message: 'Book successfully updated.' })
+            return res.status(200).json({ message: 'Book successfully updated.' })
         } catch (err) {
             return res.status(500).json({ message: 'Error in handler', err })
         }

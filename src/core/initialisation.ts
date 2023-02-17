@@ -11,8 +11,8 @@ import { ListService } from "../service/list.service";
 
 export const exportedBookRepository = new BookRepository
 export const exportedSpotRepository = new SpotRepository
-
+export const exportedListService = new ListService
 
 export const bookHandler = new BookHandler(new BookService(exportedBookRepository))
-export const listHandler = new ListHandler(new ListService)
+export const listHandler = new ListHandler(exportedListService)
 export const spotHandler = new SpotHandler(new SpotService(exportedSpotRepository))

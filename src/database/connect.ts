@@ -1,12 +1,12 @@
 import mongoose from 'mongoose'
 import { Book } from './models';
 import { Spot } from './models';
-import 'dotenv/config'
+import * as dotenv from 'dotenv'
+dotenv.config({path: `./.env.${process.env.NODE_ENV}`})
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.CLUSTER_ID}/${process.env.DB_NAME}?${process.env.DB_OPTIONS}`
 
 export async function databaseConnection() {
     mongoose.set('strictQuery', true)
-    // console.log(uri)
     await mongoose.connect(uri);
 
     const book1 = {

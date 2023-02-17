@@ -1,3 +1,4 @@
+import { exportedListService } from "../core/initialisation";
 import { IService } from "../core/service.interface";
 import { BookDTO } from "../dto/book.dto"
 const bcrypt = require("bcrypt");
@@ -23,6 +24,10 @@ export class BookService implements IService<BookDTO> {
     }
 
     async update(data: BookDTO, id: string): Promise<string | boolean | undefined> {
+        const userList = await exportedListService.listAll()
+
+        if (data.user_id != null && !userList.find((user: any) => data.user_id == user.code)) return '400'
+
         let date
         if (data.user_id == null) {
             date = null
