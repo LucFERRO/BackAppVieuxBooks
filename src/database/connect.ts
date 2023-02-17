@@ -3,15 +3,18 @@ import { Book } from './models';
 import { Spot } from './models';
 import * as dotenv from 'dotenv'
 
-if (process.env.DEV == 'true') {
-    dotenv.config()
-} else {
-    dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
-}
+// if (process.env.DEV == 'true') {
+//     dotenv.config()
+// } else {
+//     dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
+// }
+
+dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
 
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.CLUSTER_ID}/${process.env.DB_NAME}?${process.env.DB_OPTIONS}`
 
 export async function databaseConnection() {
+    console.log('.env douille', `./.env${process.env.NODE_ENV}`)
     console.log(uri)
     mongoose.set('strictQuery', true)
     await mongoose.connect(uri);

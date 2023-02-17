@@ -8,11 +8,13 @@ import unexpectedErrorMiddleware from './src/middleware/error.global';
 
 var cron = require('node-cron');
 
-if (process.env.DEV == 'true') {
-    dotenv.config()
-} else {
-    dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
-}
+// if (process.env.DEV == 'true') {
+//     dotenv.config()
+// } else {
+//     dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
+// }
+
+dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
 
 const app = express()
 app.use(cors())
