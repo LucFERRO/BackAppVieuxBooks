@@ -7,7 +7,7 @@ import helmet from 'helmet';
 
 var cron = require('node-cron');
 
-dotenv.config({ path: `./.env.${process.env.NODE_ENV}` })
+dotenv.config({ path: `./.env${process.env.NODE_ENV}` })
 
 const app = express()
 app.use(cors())
