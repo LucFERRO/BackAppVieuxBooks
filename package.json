@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "NODE_ENV=DEV nodemon server.ts",
-    "build": "NODE_ENV=DEV tsc --project ./ && cp .env ./build",
+    "build": "NODE_ENV=DEV tsc --project ./ && cp .env.DEV ./build && cp .env.TEST ./build",
     "test": "jest --runInBand --setupFiles dotenv/config ",
     "test-inte": "NODE_ENV=TEST jest --detectOpenHandles --testTimeout=5000 --config=jest.inte.config.json",
     "start": "node build/server.js"
