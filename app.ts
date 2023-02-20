@@ -38,7 +38,7 @@ export const CronFunction = () => {
     if (process.env.CRON == 'true') {
         const numberOfWeeksBeforeMail = 5
 
-        cron.schedule('*/60 10 8 * * *', async () => {
+        cron.schedule('*/60 20 8 * * *', async () => {
             const books = (await exportedBookRepository.findAll()).filter(book => {
                 if (!book.date) return false
                 return new Date(book.date.getTime() + 1000 * 60 * 60 * 24 * 7 * numberOfWeeksBeforeMail) <= new Date()
@@ -52,7 +52,7 @@ export const CronFunction = () => {
             })
         });
 
-        cron.schedule('*/60 10 8 * * *', async () => {
+        cron.schedule('*/60 20 8 * * *', async () => {
             const spotData = { address: `Spot créé par le cron le : ${new Date()}` }
             await exportedSpotRepository.create(spotData)
         });
