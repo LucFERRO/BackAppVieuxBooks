@@ -32,26 +32,29 @@ export default app
 import { exportedBookRepository, exportedSpotRepository } from './src/core/initialisation'
 import axios from 'axios'
 import { BookDTO } from './src/dto/book.dto'
-if (process.env.CRON == 'true') {
-    const numberOfWeeksBeforeMail = 5
 
-    cron.schedule('*/60 0 23 * * *', async () => {
-        const books = (await exportedBookRepository.findAll()).filter(book => {
-            if (!book.date) return false
-            return new Date(book.date.getTime() + 1000 * 60 * 60 * 24 * 7 * numberOfWeeksBeforeMail) <= new Date()
-        })
-        books.forEach((book: BookDTO, i) => {
-            axios.post('http://141.94.247.187:3000/api/v1/send', {
-                code: book.user_id,
-                subject: "Livre à rendre",
-                message: `Cela fait 5 semaines que vous avez emprunté avec le livre ${book.name}. Veuillez le ramener à un spot le plus vite possible.`
+export const CronFunction = () => {
+
+    if (process.env.CRON == 'true') {
+        const numberOfWeeksBeforeMail = 5
+
+        cron.schedule('*/60 10 8 * * *', async () => {
+            const books = (await exportedBookRepository.findAll()).filter(book => {
+                if (!book.date) return false
+                return new Date(book.date.getTime() + 1000 * 60 * 60 * 24 * 7 * numberOfWeeksBeforeMail) <= new Date()
             })
-        })
-    });
+            books.forEach((book: BookDTO, i) => {
+                axios.post('http://141.94.247.187:3000/api/v1/send', {
+                    code: book.user_id,
+                    subject: "Livre à rendre",
+                    message: `Cela fait 5 semaines que vous avez emprunté avec le livre ${book.name}. Veuillez le ramener à un spot le plus vite possible.`
+                })
+            })
+        });
 
-    cron.schedule('*/60 0 23 * * *', async () => {
-        const spotData = { address: `Spot créé par le cron le : ${new Date()}` }
-        await exportedSpotRepository.create(spotData)
-    });
+        cron.schedule('*/60 10 8 * * *', async () => {
+            const spotData = { address: `Spot créé par le cron le : ${new Date()}` }
+            await exportedSpotRepository.create(spotData)
+        });
+    }
 }
-///
